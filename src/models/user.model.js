@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";     // it is used for generating token
+import bcrypt from "bcrypt";        // it is used for hashing password
 
 const userSchema = new Schema(
   {
@@ -58,6 +58,7 @@ const userSchema = new Schema(
   }
 );
 
+// before saving data in mongodb this function will be called 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
@@ -65,10 +66,12 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+// Schema Method to compare password
 userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
+// Schema method to generate token 
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
@@ -84,6 +87,7 @@ userSchema.methods.generateAccessToken = function () {
   );
 };
 
+// schema method for refesh token 
 userSchema.methods.generateRefreshToken = function () {
   return jwt.sign(
     {
