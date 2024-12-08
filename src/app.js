@@ -16,4 +16,11 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" })); // to enable url
 app.use(express.static("public")); // to serve static files from the public folder
 app.use(cookieParser()); // to parse cookies
 
+// routes import 
+import userRouter from "./routes/user.routes.js"
+
+// routes declaration 
+app.use("/api/v1/users", userRouter)
+
+
 export { app };
