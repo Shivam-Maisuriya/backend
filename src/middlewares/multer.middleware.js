@@ -1,4 +1,4 @@
-import multer from "multer";
+import multer from "multer"; // third party platform for file handling 
 
 const storage = multer.diskStorage({
   // cb = callback
