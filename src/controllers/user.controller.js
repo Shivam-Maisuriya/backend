@@ -193,6 +193,7 @@ const logoutUser = asyncHandler( async(req, res) => {
   
 })
 
+// for refresh token route
 const refreshAccessToken = asyncHandler(async(req, res) => {
   const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
   
@@ -242,6 +243,7 @@ const refreshAccessToken = asyncHandler(async(req, res) => {
 
 })
 
+// for password change
 const changeCurrentPassword = asyncHandler( async(req, res) => {
   const {oldPassword, newPassword} = req.body
 
@@ -265,6 +267,7 @@ const changeCurrentPassword = asyncHandler( async(req, res) => {
   )
 })
 
+// for getting user details
 const getCurrentUser = asyncHandler( async(req, res) => {
   
   return res
@@ -275,6 +278,7 @@ const getCurrentUser = asyncHandler( async(req, res) => {
 
 })
 
+// for updating user details like fullName, email 
 const updateAccountDetails = asyncHandler( async (req, res) => {
   const {fullName, email} = req.body
 
@@ -305,6 +309,7 @@ const updateAccountDetails = asyncHandler( async (req, res) => {
 
 }) 
 
+// for updating user avatar
 const updateUserAvatar = asyncHandler( async(req, res) => {
   const avatarLocalPath = req.file?.path  
 
@@ -336,6 +341,7 @@ const updateUserAvatar = asyncHandler( async(req, res) => {
 
 })
 
+// for updating user coverImage 
 const updateUserCoverImage = asyncHandler( async(req, res) => {
   const coverImageLocalPath = req.file?.path  
 
